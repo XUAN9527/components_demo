@@ -31,7 +31,7 @@ void app_main(void)
 	// mcu_usart1_init();
     
 	userShellInit();
-	// drv_ble_init();
+	// drv_ble_init()
 
 	logInfo("log info!");
 	logDebug("log debug!");

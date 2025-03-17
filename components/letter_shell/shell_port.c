@@ -63,7 +63,7 @@ signed char userShellRead(char *data, unsigned short len)
 void userShellInit(void)
 {
     uart_config_t uartConfig = {
-        .baud_rate = 115200,
+        .baud_rate = 921600,
         .data_bits = UART_DATA_8_BITS,
         .parity    = UART_PARITY_DISABLE,
         .stop_bits = UART_STOP_BITS_1,
@@ -81,5 +81,12 @@ void userShellInit(void)
     uartLog.level = LOG_DEBUG;
     logRegister(&uartLog, &shell);
 
-    xTaskCreate(shellTask, "shell", 2048, &shell, configMAX_PRIORITIES - 1, NULL);
+    xTaskCreate(shellTask, "shell", 2048, &shell, tskIDLE_PRIORITY, NULL);
 }
+
+static void reboot(void)
+{
+    esp_restart();
+}
+SHELL_EXPORT_CMD(SHELL_CMD_PERMISSION(0)|SHELL_CMD_TYPE(SHELL_TYPE_CMD_FUNC)|SHELL_CMD_DISABLE_RETURN, reboot, reboot,system software reset);
+
