@@ -11,6 +11,8 @@
 #include "shell_port.h"
 #include "log.h"
 #include "nvs_flash.h"
+#include <inttypes.h>
+#include "drv_ble.h"
 
 static const char *TAG = "sample test";
 
@@ -31,7 +33,7 @@ void app_main(void)
 	// mcu_usart1_init();
     
 	userShellInit();
-	// drv_ble_init()
+	drv_ble_init();
 
 	logInfo("log info!");
 	logDebug("log debug!");

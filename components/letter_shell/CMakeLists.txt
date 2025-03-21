@@ -7,7 +7,6 @@ idf_component_register(
          "shell_cmd_list.c"
          "shell_ext.c"
     INCLUDE_DIRS "include"
+    REQUIRES driver
     LDFRAGMENTS "shell.lf"
-    # PRIV_REQUIRES led
-    REQUIRES esp_driver_uart
 )
