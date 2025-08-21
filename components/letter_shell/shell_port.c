@@ -36,9 +36,9 @@ void uartLogWrite(char *buffer, short len)
  * 
  * @return unsigned short 写入实际长度
  */
-unsigned short userShellWrite(char *data, unsigned short len)
+signed short userShellWrite(char *data, unsigned short len)
 {
-    return uart_write_bytes(LETTER_SHELL_UART, (const char *)data, len);
+    return uart_write_bytes(LETTER_SHELL_UART, data, len);
 }
 
 
@@ -50,7 +50,7 @@ unsigned short userShellWrite(char *data, unsigned short len)
  * 
  * @return unsigned short 读取实际长度
  */
-signed char userShellRead(char *data, unsigned short len)
+signed short userShellRead(char *data, unsigned short len)
 {
     return uart_read_bytes(LETTER_SHELL_UART, (uint8_t *)data, len, portMAX_DELAY);
 }
